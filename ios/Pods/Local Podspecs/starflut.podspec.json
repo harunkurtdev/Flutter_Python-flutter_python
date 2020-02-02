@@ -1,0 +1,43 @@
+{
+  "name": "starflut",
+  "version": "0.5.0",
+  "summary": "bridge for flutter interact with other programming languages",
+  "description": "bridge for flutter interact with other programming languages, such as c/c++ lua, python, ruby, golang, rust, etc.",
+  "homepage": "http://www.srplab.com",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "srplab": "srplab.cn@hotmail.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*.{m,mm}",
+  "public_header_files": "Classes/**/*.{h}",
+  "dependencies": {
+    "Flutter": [
+
+    ]
+  },
+  "compiler_flags": "-Wno-unused-function -DENV_IOS -DENV_MODULEEXPORT= -DENV_MODULECALL= -DENV_WITHPYTHON=\\\"python3.6\\\"",
+  "ios": {
+    "libraries": [
+      "iconv",
+      "stdc++",
+      "starcore",
+      "star_python36",
+      "python3.6m",
+      "sqlite3",
+      "ssl",
+      "crypto"
+    ]
+  },
+  "xcconfig": {
+    "HEADER_SEARCH_PATHS": "/Users/keagansed/Documents/starcore_for_ios/include",
+    "LIBRARY_SEARCH_PATHS": "/Users/keagansed/Documents/starcore_for_ios /Users/keagansed/Documents/starcore_for_ios/python.files/python-3.6"
+  },
+  "platforms": {
+    "ios": "8.0"
+  }
+}

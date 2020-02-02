@@ -6,6 +6,12 @@ import 'package:flutter/services.dart' show rootBundle;
 
 void main() => runApp(new MyApp());
 
+
+/**
+ * Bu starflut kütüphanesi ile farklı derleyiciler kullanılabilir...
+ */
+
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -37,10 +43,16 @@ class _MyHomePageState extends State<MyHomePage> {
     _initStarCore();
   }
 
+  /**
+   * nereden ki dosyayı okumak istiyorsak onu giriyoruz
+   */
   Future<String> getFileData(String path) async {
     return await rootBundle.loadString(path);
   }
-
+  /**
+   * buraso sabit bir şekildedir .zip dosyasını açıp okumak içindir
+   * yani python.zip dosyasını açarak kodlarını derlemek için
+   */
   void _initStarCore() async{
     StarCoreFactory starcore = await Starflut.getFactory();
     StarServiceClass Service = await starcore.initSimple("test", "123", 0, 0, []);
@@ -75,15 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      //_counter++;
+
     });
   }
 
+  //python kodlarını yazdırmak için fonksiyon
   void ShowOutput(String Info) async{
     if( Info == null || Info.length == 0)
       return;
@@ -94,8 +102,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void runScriptCode() async{
-
+    //Burası file dosyasıyı açıp string bir ifadeue getirerek 
     String data = await getFileData("starfiles/deneme.py");
+    //burada python da derlemek içindir
     await srvGroup.runScript("python", data, null);
 
     setState((){
